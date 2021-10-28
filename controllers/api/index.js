@@ -6,6 +6,6 @@ const characterRoutes = require('./character-routes')
 
 router.use('/users', userRoutes);
 router.use('/books', bookRoutes);
-router.use('/character', characterRoutes)
+router.use('/characters', characterRoutes)
 
 module.exports = router;
