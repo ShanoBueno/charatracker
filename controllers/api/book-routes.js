@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
      
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      
     ],
   })
     .then(dbPostData => res.json(dbPostData))
@@ -23,6 +23,11 @@ router.get('/:id', (req, res) => {
   where: {
     id: req.params.id
   },
+   attributes: [
+      'id',
+      'title',
+      'user_id',
+   ],
   include: [
     {
       model: Character,
@@ -30,12 +35,12 @@ router.get('/:id', (req, res) => {
     },
   ]
 })
-  .then(dbUserData => {
-    if (!dbUserData) {
+  .then(dbBookData => {
+    if (!dbBookData) {
       res.status(404).json({ message: 'No user found with this id' });
       return;
     }
-    res.json(dbUserData);
+    res.json(dbBookData);
   })
   .catch(err => {
     console.log(err);

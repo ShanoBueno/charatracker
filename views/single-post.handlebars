@@ -1,0 +1,26 @@
+<article class="post">
+  <div class="title">
+      <a href="/book/{{book.id}}">{{book.title}}</a>
+    </div>
+    </div>
+    <ul>
+      {{#each book.characters}}
+      <li>
+        {{name}}
+        {{notes}}
+      </li>
+      {{/each}}
+    </ul>
+    <form class="character-form">
+      <div>
+        <textarea name="character-name"></textarea>
+        <textarea name="character-notes"></textarea>
+      </div>
+    
+      <div>
+        <button type="submit">add character</button>
+        <button type="button" class="upvote-btn">upvote</button>
+      </div>
+    </form>
+  </div>
+</article>
