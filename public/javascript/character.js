@@ -4,11 +4,7 @@ async function characterFormHandler(event) {
   const name = document.querySelector('textarea[name="character-name"]').value.trim();
   const notes = document.querySelector('textarea[name="character-notes]').value.trim(); 
 
-  const book_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
-
-  console.log(name, notes, book_id);
+  console.log(name, notes);
 }
 
-document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);
+document.querySelector('.character-form').addEventListener('submit', characterFormHandler);

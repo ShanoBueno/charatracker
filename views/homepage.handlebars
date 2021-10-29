@@ -1,3 +1,4 @@
+<div>
 <ul class="book-list">
     {{#each books}}
 
@@ -14,5 +15,19 @@
     </article>
   </li>
     {{/each}}
+    
 
 </ul>
+
+<form class="book-form">
+  <div>
+    <textarea name="book-title"></textarea>  
+    </div>
+
+  <div>
+    <button type="submit">add book</button>
+  </div>
+</form>
+</div>
+
+  <script src="/javascript/book.js"></script>
