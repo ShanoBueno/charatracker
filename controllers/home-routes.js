@@ -9,11 +9,12 @@ router.get('/', (req, res) => {
   console.log(req.session);
 
   Book.findAll({
-
+    where:{user_id: req.session.user_id},
     attributes: [
       'id',
       'title',
       'created_at',
+      'user_id'
     ],
   
   })
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.redirect('/login');
     });
 });
 
@@ -69,6 +70,33 @@ router.get('/book/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/character/:id', (req, res) => {
+  Character.findByPk(req.params.id, {
+    attributes: [
+      'id',
+      'name',
+      'notes',
+      'book_id']
+
+    
+  })
+    .then(dbPostData => {
+      if (dbPostData) {
+        const post = dbPostData.get({ plain: true });
+        
+        res.render('single-post', {
+          post,
+          loggedIn: true
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(err => {
       res.status(500).json(err);
     });
 });

@@ -1,26 +1,45 @@
 <article class="post">
   <div class="title">
-      <a href="/book/{{book.id}}">{{book.title}}</a>
-    </div>
-    </div>
+      <h2>{{book.title}}</h2>
+    
     <ul>
       {{#each book.characters}}
       <li>
-        {{name}}
-        {{notes}}
+       
+        <form id="edit-form" class = "edit-form">
+          <h2>{{name}}</h2>
+          <h3>notes:</h3>
+          <textarea name="char-update" >{{notes}}
+          </textarea>
+          <input name="char-edit-id" type="hidden" value="{{id}}">
+          <input name="book-edit-id" type="hidden" value="{{book.id}}">
+          <input name="char-name" type="hidden" value="{{name}}">
+          
+          <div>
+          <button type="submit">Save Update</button>
+          </div>
+
+        </form>
+
+
       </li>
       {{/each}}
     </ul>
     <form class="character-form">
       <div>
+        <h2>New Character Name:</h2>
         <textarea name="character-name"></textarea>
+        <h2>Notes:</h2>
         <textarea name="character-notes"></textarea>
+        <input name="book_id" type="hidden" value="{{book.id}}">
       </div>
     
       <div>
         <button type="submit">add character</button>
       </div>
+      </div>
     </form>
   </div>
 </article>
 <script src="/javascript/character.js"></script>
+<script src="/javascript/edit-character.js"></script>
