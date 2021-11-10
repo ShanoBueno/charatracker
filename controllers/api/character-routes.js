@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-User.findAll({
+  Character.findAll({
   attributes: { exclude: ['password'] }
 })
   .then(dbUserData => res.json(dbUserData))

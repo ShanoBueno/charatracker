@@ -43,7 +43,7 @@ router.get('/book/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
-      'id',
+      ['id','bookId'],
       'title',
       'created_at',
      

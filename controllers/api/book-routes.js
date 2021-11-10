@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     id: req.params.id
   },
    attributes: [
-      'id',
+      ['id','bookId'],
       'title',
       'user_id',
    ],
@@ -36,11 +36,11 @@ router.get('/:id', (req, res) => {
   ]
 })
   .then(dbBookData => {
+    console.log(dbBookData);
     if (!dbBookData) {
-      res.status(404).json({ message: 'No book found with this id' });
-      return;
+      return res.status(404).json({ message: 'No book found with this id' });
     }
-    res.json(dbBookData);
+    return res.status(200).json(dbBookData);
   })
   .catch(err => {
     console.log(err);

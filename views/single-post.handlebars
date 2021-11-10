@@ -2,26 +2,21 @@
   <div class="title">
       <h2>{{book.title}}</h2>
     
-    <ul>
+    <ul id="parent-list">
       {{#each book.characters}}
       <li>
-       
-        <form id="edit-form" class = "edit-form">
+        <div class = "edit-form">
           <h2>{{name}}</h2>
           <h3>notes:</h3>
           <textarea name="char-update" >{{notes}}
           </textarea>
           <input name="char-edit-id" type="hidden" value="{{id}}">
-          <input name="book-edit-id" type="hidden" value="{{book.id}}">
+          <input name="book-edit-id" type="hidden" value="{{../book.bookId}}">
           <input name="char-name" type="hidden" value="{{name}}">
-          
           <div>
-          <button type="submit">Save Update</button>
+          <button class="save">Save Update</button>
           </div>
-
-        </form>
-
-
+        </div>
       </li>
       {{/each}}
     </ul>
